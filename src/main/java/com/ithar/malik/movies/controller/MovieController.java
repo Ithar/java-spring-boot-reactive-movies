@@ -2,6 +2,8 @@ package com.ithar.malik.movies.controller;
 
 import com.ithar.malik.movies.service.MoveService;
 import domain.Movie;
+import domain.MovieEvent;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,10 +30,20 @@ public class MovieController {
     public Mono<Movie> getMovieById(@PathVariable String id) {
 
         if (id.isEmpty()) {
-            System.out.println("Invalid id");
+            System.out.println("Invalid movie id");
         }
 
         return moveService.getMoveById(id);
+    }
+
+    @GetMapping(value = "/{id}/events", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public Flux<MovieEvent> generateEvents(@PathVariable String id) {
+
+        if (id.isEmpty()) {
+            System.out.println("Invalid movie id");
+        }
+
+        return moveService.generateEvents(id);
     }
 
 
