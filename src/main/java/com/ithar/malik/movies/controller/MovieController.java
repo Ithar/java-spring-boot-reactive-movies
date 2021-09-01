@@ -24,8 +24,9 @@ public class MovieController {
     }
 
     @GetMapping
-    public Flux<Movie> getMovies() {
-        return movieService.getAllMovies();
+    public ResponseEntity<Flux<Movie>> getMovies() {
+        Flux<Movie> moviesFlux =  movieService.getAllMovies();
+        return ResponseEntity.ok(moviesFlux);
     }
 
     @GetMapping("/{id}")
@@ -35,18 +36,19 @@ public class MovieController {
             System.out.println("Invalid movie id");
         }
 
-        Mono<Movie> mono = movieService.getMoveById(id);
-        return ResponseEntity.ok(mono);
+        Mono<Movie> movieMono = movieService.getMoveById(id);
+        return ResponseEntity.ok(movieMono);
     }
 
     @GetMapping(value = "/{id}/events", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-    public Flux<MovieEvent> generateEvents(@PathVariable String id) {
+    public ResponseEntity<Flux<MovieEvent>> getMovieEvents(@PathVariable String id) {
 
         if (id.isEmpty()) {
-            System.out.println("Invalid movie id");
+            System.out.println("Invalid movie id, cannot generate events");
         }
 
-        return movieService.generateEvents(id);
+        Flux<MovieEvent> eventsFlux = movieService.generateEvents(id);
+        return ResponseEntity.ok(eventsFlux);
     }
 
 
