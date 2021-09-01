@@ -1,6 +1,6 @@
 package com.ithar.malik.movies.controller;
 
-import com.ithar.malik.movies.service.MoveService;
+import com.ithar.malik.movies.service.MovieService;
 import domain.Movie;
 import domain.MovieEvent;
 import org.springframework.http.MediaType;
@@ -15,15 +15,15 @@ import reactor.core.publisher.Mono;
 @RequestMapping("/movies")
 public class MovieController {
 
-    private final MoveService moveService;
+    private final MovieService movieService;
 
-    public MovieController(MoveService moveService) {
-        this.moveService = moveService;
+    public MovieController(MovieService movieService) {
+        this.movieService = movieService;
     }
 
     @GetMapping
     public Flux<Movie> getMovies() {
-        return moveService.getAllMovies();
+        return movieService.getAllMovies();
     }
 
     @GetMapping("/{id}")
@@ -33,7 +33,7 @@ public class MovieController {
             System.out.println("Invalid movie id");
         }
 
-        return moveService.getMoveById(id);
+        return movieService.getMoveById(id);
     }
 
     @GetMapping(value = "/{id}/events", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
@@ -43,7 +43,7 @@ public class MovieController {
             System.out.println("Invalid movie id");
         }
 
-        return moveService.generateEvents(id);
+        return movieService.generateEvents(id);
     }
 
 

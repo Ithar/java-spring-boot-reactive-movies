@@ -12,11 +12,11 @@ import java.util.Date;
 import java.util.UUID;
 
 @Service
-public class MoveService {
+public class MovieService {
 
     private final MovieRepository movieRepository;
 
-    public MoveService(MovieRepository movieRepository) {
+    public MovieService(MovieRepository movieRepository) {
         this.movieRepository = movieRepository;
     }
 
