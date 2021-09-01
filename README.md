@@ -29,8 +29,9 @@ Stack  | version |
 
 
 ## Application URL
-http://localhost:8080/
-
+curl -v http://localhost:8080/api/v1/movies
+curl -v http://localhost:8080/api/v1/movies/612f8ba650390a0ba69a09d2
+curl -v http://localhost:8080/api/v1/movies/612f8ba650390a0ba69a09d2/events
 
 ## Notes
 * Mono - publisher with 0 or 1 elements

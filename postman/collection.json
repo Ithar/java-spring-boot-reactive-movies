@@ -1,0 +1,57 @@
+{
+	"info": {
+		"_postman_id": "44e0945d-22b1-408c-bf80-6c6011d42b1a",
+		"name": "Personal ",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [		
+		{
+			"name": "java-spring-boot-reactive-movies",
+			"item": [
+				{
+					"name": "movies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/movies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "movieById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/movies/612f69776c94537322c5868a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"movies",
+								"612f69776c94537322c5868a"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

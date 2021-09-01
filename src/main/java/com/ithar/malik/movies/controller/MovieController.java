@@ -3,7 +3,9 @@ package com.ithar.malik.movies.controller;
 import com.ithar.malik.movies.service.MovieService;
 import domain.Movie;
 import domain.MovieEvent;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +14,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
-@RequestMapping("/movies")
+@RequestMapping("/api/v1/movies")
 public class MovieController {
 
     private final MovieService movieService;
@@ -27,13 +29,14 @@ public class MovieController {
     }
 
     @GetMapping("/{id}")
-    public Mono<Movie> getMovieById(@PathVariable String id) {
+    public ResponseEntity<Mono<Movie>> getMovieById(@PathVariable String id) {
 
         if (id.isEmpty()) {
             System.out.println("Invalid movie id");
         }
 
-        return movieService.getMoveById(id);
+        Mono<Movie> mono = movieService.getMoveById(id);
+        return ResponseEntity.ok(mono);
     }
 
     @GetMapping(value = "/{id}/events", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
