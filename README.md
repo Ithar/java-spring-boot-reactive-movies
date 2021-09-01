@@ -35,6 +35,8 @@ http://localhost:8080/
 ## Notes
 * Mono - publisher with 0 or 1 elements
 * Flux - publisher with 0 or many elements
+* Web Client - Asynchronous, non-blocking whereby request are queued; perfect for Mono & Flux types 
+
 
 ## Further enhancements 
 

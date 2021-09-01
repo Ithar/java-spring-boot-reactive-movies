@@ -25,10 +25,6 @@ public class MoveService {
     }
 
     public Flux<Movie> getAllMovies() {
-
-        MovieEvent me = new MovieEvent(generateEventId(), "1", new Date());
-        System.out.println(me.toString());
-
         return movieRepository.findAll();
     }
 
