@@ -14,13 +14,13 @@ public class InitMovies implements ApplicationListener<ContextRefreshedEvent>  {
 
     private final MovieRepository repository;
 
-    public InitMovies(MovieRepository repository) {
+    public InitMovies(final MovieRepository repository) {
         this.repository = repository;
+        this.repository.deleteAll();
     }
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
-        repository.deleteAll();
         createMovies();
     }
 

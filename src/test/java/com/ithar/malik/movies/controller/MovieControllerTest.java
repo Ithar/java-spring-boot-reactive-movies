@@ -42,10 +42,10 @@ class MovieControllerTest {
                                 new Movie("3", "Test Movie 3"),
                                 new Movie("4", "Test Movie 4"));
 
-        testMovieEvents = Flux.just(new MovieEvent("1", UUID.randomUUID().toString(), new Date()),
-                                    new MovieEvent("2", UUID.randomUUID().toString(), new Date()),
-                                    new MovieEvent("3", UUID.randomUUID().toString(), new Date()),
-                                    new MovieEvent("4", UUID.randomUUID().toString(), new Date()));
+        testMovieEvents = Flux.just(new MovieEvent(UUID.randomUUID().toString(),"1", new Date()),
+                                    new MovieEvent(UUID.randomUUID().toString(),"1", new Date()),
+                                    new MovieEvent(UUID.randomUUID().toString(),"1",  new Date()),
+                                    new MovieEvent(UUID.randomUUID().toString(),"1",  new Date()));
     }
 
     @Test

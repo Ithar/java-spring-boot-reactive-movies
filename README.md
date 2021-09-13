@@ -1,6 +1,6 @@
 # java-spring-boot-reactive-movies
 
-Reactive web app for movies with CRUD and mongo DB.
+Reactive web API for movies with CRUD and mongo DB.
 
 #### Features
 - Reactive Webflux
@@ -23,21 +23,22 @@ Stack  | version |
 
 ##
 
-## Application Build
-
 ## Application Run
-
+`docker start movie-mongo-db`
+`SpringBoot Startup`
 
 ## Application URL
+```
 curl -v http://localhost:8080/api/v1/movies
 curl -v http://localhost:8080/api/v1/movies/612f8ba650390a0ba69a09d2
 curl -v http://localhost:8080/api/v1/movies/612f8ba650390a0ba69a09d2/events
+```
 
 ## Notes
 * Mono - publisher with 0 or 1 elements
 * Flux - publisher with 0 or many elements
 * Web Client - Asynchronous, non-blocking whereby request are queued; perfect for Mono & Flux types 
-
+* [Spring Docs](https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html) 
 
 ## Further enhancements 
 
