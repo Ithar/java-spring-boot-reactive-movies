@@ -46,7 +46,7 @@ public class MovieController {
             System.out.println("Invalid movie id, cannot generate events");
         }
 
-        Flux<MovieEvent> eventsFlux = movieService.generateEvents(id);
+        Flux<MovieEvent> eventsFlux = movieService.getMovieEvents(id);
         return ResponseEntity.ok(eventsFlux);
     }
 

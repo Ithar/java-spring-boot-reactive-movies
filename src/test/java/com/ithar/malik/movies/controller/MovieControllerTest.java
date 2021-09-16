@@ -77,7 +77,7 @@ class MovieControllerTest {
     @Test
     void getMovieEvents() {
 
-        given(movieService.generateEvents(any())).willReturn(testMovieEvents);
+        given(movieService.getMovieEvents(any())).willReturn(testMovieEvents);
 
         webTestClient.get()
                 .uri("/api/v1/movies/1/events")

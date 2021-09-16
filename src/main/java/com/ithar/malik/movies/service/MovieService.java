@@ -32,7 +32,7 @@ public class MovieService {
         return generateEvents(movieId);
     }
 
-    public Flux<MovieEvent> generateEvents(String movieId) {
+    private Flux<MovieEvent> generateEvents(String movieId) {
         return Flux.<MovieEvent>generate(event -> {
             event.next(new MovieEvent(generateEventId(), movieId, new Date()));
         }).delayElements(Duration.ofSeconds(3));
