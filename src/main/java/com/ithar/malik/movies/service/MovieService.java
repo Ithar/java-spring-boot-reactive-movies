@@ -28,9 +28,13 @@ public class MovieService {
         return movieRepository.findAll();
     }
 
-    public Flux<MovieEvent> generateEvents(String id) {
+    public Flux<MovieEvent> getMovieEvents(String movieId) {
+        return generateEvents(movieId);
+    }
+
+    public Flux<MovieEvent> generateEvents(String movieId) {
         return Flux.<MovieEvent>generate(event -> {
-            event.next(new MovieEvent(generateEventId(), id, new Date()));
+            event.next(new MovieEvent(generateEventId(), movieId, new Date()));
         }).delayElements(Duration.ofSeconds(3));
     }
 

@@ -29,9 +29,13 @@ Stack  | version |
 
 ## Application URL
 ```
-curl -v http://localhost:8080/api/v1/movies -i -H "Accept: application/json"
-curl -v http://localhost:8080/api/v1/movies/612f8ba650390a0ba69a09d2 -i -H "Accept: application/json"
-curl -v http://localhost:8080/api/v1/movies/612f8ba650390a0ba69a09d2/events -i -H "Accept: application/x-ndjson"
+curl -v http://localhost:8080/api/v1/movies -H "Accept: application/json"
+curl -v http://localhost:8080/api/v1/movies/612f8ba650390a0ba69a09d2 -H "Accept: application/json"
+curl -v http://localhost:8080/api/v1/movies/612f8ba650390a0ba69a09d2/events -H "Accept: application/x-ndjson"
+
+
+curl -v http://localhost:8080/api/v2/movies -H "Accept: application/json"
+curl -v http://localhost:8080/api/v2/movies/614321112ebe6632a49736a5/events -H "Accept: application/x-ndjson"
 ```
 
 ## Notes
