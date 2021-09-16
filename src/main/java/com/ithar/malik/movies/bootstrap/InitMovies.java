@@ -1,6 +1,6 @@
 package com.ithar.malik.movies.bootstrap;
 
-import domain.Movie;
+import com.ithar.malik.movies.domain.Movie;
 import com.ithar.malik.movies.repository.MovieRepository;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;

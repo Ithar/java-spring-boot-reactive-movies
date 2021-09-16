@@ -1,4 +1,4 @@
-package domain;
+package com.ithar.malik.movies.domain;
 
 import lombok.*;
 import org.springframework.data.mongodb.core.mapping.Document;

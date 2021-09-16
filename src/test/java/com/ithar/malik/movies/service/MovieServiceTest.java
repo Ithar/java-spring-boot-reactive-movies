@@ -1,7 +1,7 @@
 package com.ithar.malik.movies.service;
 
 import com.ithar.malik.movies.repository.MovieRepository;
-import domain.MovieEvent;
+import com.ithar.malik.movies.domain.MovieEvent;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

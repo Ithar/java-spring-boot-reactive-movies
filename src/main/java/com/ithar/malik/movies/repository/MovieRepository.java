@@ -1,6 +1,6 @@
 package com.ithar.malik.movies.repository;
 
-import domain.Movie;
+import com.ithar.malik.movies.domain.Movie;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import org.springframework.stereotype.Repository;
 

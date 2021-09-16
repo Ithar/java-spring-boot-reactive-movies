@@ -1,8 +1,8 @@
 package com.ithar.malik.movies.service;
 
 import com.ithar.malik.movies.repository.MovieRepository;
-import domain.Movie;
-import domain.MovieEvent;
+import com.ithar.malik.movies.domain.Movie;
+import com.ithar.malik.movies.domain.MovieEvent;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
