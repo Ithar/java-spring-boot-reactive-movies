@@ -2,6 +2,7 @@ package com.ithar.malik.movies.bootstrap;
 
 import com.ithar.malik.movies.domain.Movie;
 import com.ithar.malik.movies.repository.MovieRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Slf4j
 @Component
 public class InitMovies implements ApplicationListener<ContextRefreshedEvent>  {
 
@@ -30,10 +32,12 @@ public class InitMovies implements ApplicationListener<ContextRefreshedEvent>  {
         List<Movie> movies = movieTitles.stream()
                 .map(title -> Movie.builder().title(title).build()).collect(Collectors.toList());
 
-        repository.saveAll(movies).subscribe(null, null, () -> repository.findAll().subscribe(System.out::println));
+        repository.saveAll(movies).subscribe(savedMovie -> log.info("Saving movie:" + savedMovie.getTitle()),
+                                            throwable -> log.info("Error occurred saving to Mongo" + throwable.getMessage()),
+                                            () -> repository.findAll().subscribe(System.out::println));
 
-        System.out.println("#############################");
-        System.out.println("Initialization completed ... ");
-        System.out.println("#############################");
+        log.info("#############################");
+        log.info("Initialization completed ... ");
+        log.info("#############################");
     }
 }

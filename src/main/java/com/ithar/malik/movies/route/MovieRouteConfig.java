@@ -13,14 +13,16 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 @Configuration
 public class MovieRouteConfig {
 
-    public static final String MOVIE_PATH = "/api/v2/movies";
+    public static final String MOVIES_PATH = "/api/v2/movies";
+    public static final String MOVIE_PATH = "/api/v2/movies/{movieId}";
     public static final String MOVIE_EVENTS_PATH = "/api/v2/movies/{movieId}/events";
 
     @Bean
     public RouterFunction<ServerResponse> movieRoutes(MovieHandler handler) {
 
-        return route().GET(MOVIE_PATH, accept(APPLICATION_JSON), handler::fetchMovies)
-            .GET(MOVIE_EVENTS_PATH, accept(APPLICATION_NDJSON), handler::streamMovieEvents)
+        return route().GET(MOVIES_PATH, accept(APPLICATION_JSON), handler::fetchMovies)
+                .GET(MOVIE_PATH, accept(APPLICATION_JSON), handler::fetchMovie)
+                .GET(MOVIE_EVENTS_PATH, accept(APPLICATION_NDJSON), handler::streamMovieEvents)
                 .build();
     }
 }

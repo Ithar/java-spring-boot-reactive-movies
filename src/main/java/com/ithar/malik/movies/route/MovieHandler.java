@@ -22,9 +22,17 @@ public class MovieHandler {
     private final MovieService movieService;
 
     public Mono<ServerResponse> fetchMovies(ServerRequest request){
-        int size = Integer.parseInt(request.queryParam("size").orElse("3"));
+        int size = Integer.parseInt(request.queryParam("size").orElse("10"));
         return ok().contentType(APPLICATION_JSON)
                 .body(movieService.getAllMovies().take(size), Movie.class);
+    }
+
+    public Mono<ServerResponse> fetchMovie(ServerRequest request){
+
+        String movieId = request.pathVariable("movieId");
+
+        return ok().contentType(APPLICATION_NDJSON)
+                .body(movieService.getMoveById(movieId), Movie.class);
     }
 
     public Mono<ServerResponse> streamMovieEvents(ServerRequest request){
